@@ -1,0 +1,28 @@
+{
+  "so": {"Caption": "Microsoft Windows 11 Home", "Version": "10.0.26300", "BuildNumber": "26300"},
+  "placa_mae": {"Manufacturer": "ASUSTeK COMPUTER INC.", "Product": "TUF H310M-PLUS GAMING/BR"},
+  "cpu": {"Name": "Intel(R) Core(TM) i5-9400F CPU @ 2.90GHz", "NumberOfCores": 6, "NumberOfLogicalProcessors": 6, "MaxClockSpeed": 2904},
+  "gpu": {"Name": "NVIDIA GeForce RTX 5060", "DriverVersion": "32.0.16.2140", "PNPDeviceID": "PCI\\VEN_10DE&DEV_2D05&SUBSYS_53711462&REV_A1\\4&2D78AB8F&0&0008", "DriverDate": "2026-11-20"},
+  "gpu_vram": {"DriverDesc": "NVIDIA GeForce RTX 5060", "Vram": 8546942976},
+  "ram": [
+    {"Capacity": 8589934592, "Speed": 2133, "ConfiguredClockSpeed": 2133, "DeviceLocator": "ChannelA-DIMM1", "BankLabel": "BANK 0", "Manufacturer": "G-Skill", "PartNumber": "F4-2666C15-8GVR     "},
+    {"Capacity": 8589934592, "Speed": 2133, "ConfiguredClockSpeed": 2133, "DeviceLocator": "ChannelB-DIMM1", "BankLabel": "BANK 2", "Manufacturer": "CRUCIAL", "PartNumber": "BL8G26C16U4B.8FD    "}
+  ],
+  "ram_slots": 2,
+  "discos": [
+    {"DeviceId": "0", "FriendlyName": "CT240BX500SSD1", "MediaType": "SSD", "BusType": "SATA", "Size": 240057409536},
+    {"DeviceId": "1", "FriendlyName": "ST1000DM010-2EP102", "MediaType": "HDD", "BusType": "SATA", "Size": 1000204886016}
+  ],
+  "particoes": [{"DiskNumber": 0, "DriveLetter": "C"}, {"DiskNumber": 1, "DriveLetter": "D"}],
+  "volumes": [
+    {"DriveLetter": "D", "FileSystemLabel": "Novo volume", "FileSystem": "NTFS", "Size": 1000186310656, "SizeRemaining": 521288675328, "DriveType": "Fixed"},
+    {"DriveLetter": "C", "FileSystemLabel": "", "FileSystem": "NTFS", "Size": 238999494656, "SizeRemaining": 105141096448, "DriveType": "Fixed"}
+  ],
+  "inicializacao": [
+    {"Name": "Steam", "Command": "\"D:\\Steam\\steam.exe\" -silent", "Location": "HKU\\S-1-5-21-0000000000-0000000000-000000000-1001\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run"},
+    {"Name": "Discord", "Command": "\"C:\\Users\\Usuario\\AppData\\Local\\Discord\\Discord.exe\" --processStart Discord.exe", "Location": "HKU\\S-1-5-21-0000000000-0000000000-000000000-1001\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run"},
+    {"Name": "RiotClient", "Command": "D:\\Riot Games\\Riot Client\\RiotClientServices.exe --launch-background-mode", "Location": "HKU\\S-1-5-21-0000000000-0000000000-000000000-1001\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run"},
+    {"Name": "SecurityHealth", "Command": "%windir%\\system32\\SecurityHealthSystray.exe", "Location": "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run"},
+    {"Name": "Riot Vanguard", "Command": "\"C:\\Program Files\\Riot Vanguard\\vgtray.exe\"", "Location": "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run"}
+  ]
+}
