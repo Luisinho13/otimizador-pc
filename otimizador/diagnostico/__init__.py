@@ -195,5 +195,7 @@ def executar_diagnostico() -> Diagnostico:
                 erros.append(f"{nome}: {erro}")
 
     diag = montar_diagnostico(brutos, erros)
+    for achado in diag.achados:
+        log.info("  [%s] %s", achado.nivel, achado.titulo)
     log.info("Diagnóstico concluído: %d sugestão(ões).", sum(a.nivel != "ok" for a in diag.achados))
     return diag

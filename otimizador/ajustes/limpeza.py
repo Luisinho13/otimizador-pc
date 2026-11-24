@@ -144,6 +144,7 @@ class Limpeza(Ajuste):
     )
     tecnico = "Exclui arquivos das pastas marcadas; não segue atalhos de pasta (junctions/symlinks)"
     texto_botao = "Limpar selecionados"
+    repetivel = True
     reversivel = False  # arquivos temporários não têm "desfazer" (e não são necessários)
 
     def __init__(self, estado, alvos: list[AlvoLimpeza] | None = None) -> None:  # type: ignore[no-untyped-def]

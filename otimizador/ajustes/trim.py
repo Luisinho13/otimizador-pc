@@ -33,6 +33,7 @@ class TrimSsd(Ajuste):
     )
     tecnico = "fsutil behavior set DisableDeleteNotify 0  +  Optimize-Volume -DriveLetter X -ReTrim"
     texto_botao = "Ativar e executar ReTrim"
+    repetivel = True
 
     def status(self) -> StatusAjuste:
         letras = letras_ssd()

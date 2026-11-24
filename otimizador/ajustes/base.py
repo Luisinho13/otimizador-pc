@@ -44,6 +44,7 @@ class Ajuste(ABC):
     texto_botao: str = "Aplicar"
     altera_sistema: bool = True  # exige ponto de restauração antes
     reversivel: bool = True
+    repetivel: bool = False  # pode ser executado de novo mesmo já aplicado (ex.: limpeza)
 
     def __init__(self, estado: Estado) -> None:
         self.estado = estado
@@ -59,6 +60,11 @@ class Ajuste(ABC):
         raise NotImplementedError
 
     # ------------------------------------------------------------ usados pela interface
+    def verificar(self) -> StatusAjuste:
+        status = self.status()
+        log.info("Status · %s: %s", self.titulo, status.texto)
+        return status
+
     def pode_desfazer(self) -> bool:
         return self.reversivel and self.estado.tem(self.id)
 

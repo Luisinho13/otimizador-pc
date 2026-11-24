@@ -18,6 +18,7 @@ class AbrirInicializacao(Ajuste):
     )
     tecnico = "taskmgr /0 /startup"
     texto_botao = "Abrir Gerenciador de Tarefas"
+    repetivel = True
     altera_sistema = False
     reversivel = False
 
