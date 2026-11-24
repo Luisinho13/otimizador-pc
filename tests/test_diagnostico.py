@@ -31,10 +31,26 @@ def test_diagnostico_completo(cim_real):
     assert diag.tem_ssd
     assert diag.plano_ativo.nome == "Equilibrado"
     titulos = _titulos(diag)
-    assert "Memória abaixo da velocidade anunciada" in titulos
-    assert "Pentes de modelos diferentes" in titulos
     assert "Plano de energia: Equilibrado" in titulos
     assert not any("espaço" in t for t in titulos)
+
+
+def test_memoria_lenta_com_pentes_diferentes_recomenda_kit_igual(cim_real):
+    diag = montar_diagnostico(_brutos(cim_real), hoje=HOJE)
+    (achado,) = [a for a in diag.achados if a.titulo == "Memória abaixo da velocidade dos pentes"]
+    assert "2 pentes iguais" in achado.detalhe
+    assert "Ative o perfil XMP" not in achado.detalhe
+    # O aviso de pentes diferentes já está embutido; não deve aparecer duplicado.
+    assert "Pentes de modelos diferentes" not in _titulos(diag)
+
+
+def test_memoria_lenta_com_pentes_iguais_recomenda_xmp(cim_real):
+    cim = copy.deepcopy(cim_real)
+    for pente in cim["ram"]:
+        pente["Manufacturer"], pente["PartNumber"] = "G-Skill", "F4-2666C15-8GVR"
+    diag = montar_diagnostico(_brutos(cim), hoje=HOJE)
+    (achado,) = [a for a in diag.achados if a.titulo == "Memória abaixo da velocidade dos pentes"]
+    assert "Ative o perfil XMP" in achado.detalhe
 
 
 def test_pouco_espaco_e_trim_desligado(cim_real):

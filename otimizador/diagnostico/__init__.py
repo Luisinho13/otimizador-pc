@@ -84,9 +84,19 @@ def gerar_achados(d: Diagnostico, hoje: date) -> list[Achado]:
     achados: list[Achado] = []
     mem = d.memoria
 
-    if mem.abaixo_do_anunciado:
+    if mem.abaixo_do_anunciado and mem.modelos_misturados:
+        # Com pentes diferentes o XMP/DOCP costuma falhar (às vezes o PC nem dá vídeo),
+        # então a recomendação útil é trocar os pentes, não mexer na BIOS.
         achados.append(Achado(
-            "aviso", "Memória abaixo da velocidade anunciada",
+            "aviso", "Memória abaixo da velocidade dos pentes",
+            f"A RAM está rodando a {mem.mhz_atual} MHz, mas os pentes são de cerca de "
+            f"{mem.mhz_anunciado} MHz (estimado pelo modelo). Como são pentes de modelos diferentes, "
+            "o XMP/DOCP costuma não funcionar (o PC pode nem dar vídeo). Para usar a velocidade "
+            "total, troque por um kit de 2 pentes iguais (mesmo modelo, de preferência vendidos juntos).",
+        ))
+    elif mem.abaixo_do_anunciado:
+        achados.append(Achado(
+            "aviso", "Memória abaixo da velocidade dos pentes",
             f"A RAM está rodando a {mem.mhz_atual} MHz, mas os pentes são de cerca de "
             f"{mem.mhz_anunciado} MHz (estimado pelo modelo). Ative o perfil XMP (Intel) ou "
             "DOCP/EXPO (AMD) na BIOS. Em placas e processadores de entrada a velocidade máxima "
@@ -98,7 +108,7 @@ def gerar_achados(d: Diagnostico, hoje: date) -> list[Achado]:
             "Dois pentes iguais em canais diferentes (dual channel) costumam aumentar o FPS mínimo "
             "em jogos. Confira no manual da placa-mãe quais slots usar (geralmente A2 e B2).",
         ))
-    if mem.modelos_misturados:
+    if mem.modelos_misturados and not mem.abaixo_do_anunciado:
         achados.append(Achado(
             "info", "Pentes de modelos diferentes",
             "Funciona, mas pentes diferentes podem não ficar estáveis com XMP/DOCP. "
