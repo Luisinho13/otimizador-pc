@@ -54,7 +54,7 @@ A melhoria mais importante que o diagnóstico costuma encontrar nem é um "ajust
 Requisitos: Windows 10/11 e Python 3.10 ou mais recente.
 
 ```powershell
-git clone https://github.com/<seu-usuario>/otimizador-pc.git
+git clone https://github.com/Luisinho13/otimizador-pc.git
 cd otimizador-pc
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
